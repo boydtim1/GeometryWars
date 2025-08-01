@@ -1,0 +1,51 @@
+This game is a 2D arena shooter recreation of the game "Geometry Wars"
+
+Player:
+    - Player is represented by a shape defined in the player config file (Done)
+    - player will spawn in the center of the screen in the beginning and after death
+    - Player will move by a speed defined in the player config file with WASD or arrow keys (Done)
+    - Player is confined to move only within the bounds of the screen (Done)
+    - The Player will shoot bullets toward the mouse pointer when the left mouse button is pressed. The speed, size, and lifespan of the bullets are defined in the player config file (Done)
+
+Special Ability:
+    - Player will have a special ability activated by pressing X
+    - The special ability must spawn multiple entities that have a unique graphic and behavior via a new component. It must have a cooldown (Done)
+    - Properties of special ability are not defined in the config file (Done)
+
+Enemies:
+    - Enemies will spawn in random locations on the screen every x frames (Done)
+    - Enemies must not overlap the sides of the screen at the time of spawn (Done)
+    - Enemy shapes will have a random number of vertices between a minimum and maximum defined in the enemy config file (Done)
+    - Enemy shape radius will be defined in the enemy config file (Done)
+    - Enemies will be given a random color upon spawn (Done)
+    - Enemies will be given a random speed between a minimum and maximum defined in the enemy config file (Done)
+    - When an enemy reaches the edge of the screen, it will bounce off and move in the opposite direction with the same speed (Done)
+    - When (large) enemies collide with a bullet or player, they are destroyed and N small enemies are spawned in their place where N is the number of vertices of the enemy (Done)
+    - Each small enemy must have the same color and number of vertices as the original enemy, (Done)
+    - The small enemies travel outward at angles of fixed intervals equal to 360/N. (Done)
+    - For example, if an enemy has 5 vertices, the small enemies will travel outward at angles of 360/5 = 72 degrees. (Done)
+    - The small enemies must have a radius equal to 1/2 the radius of the original enemy (Done)
+
+Score:
+    - Each time and enemy spawns it is given a score component of N*100 where N is the number of vertices it has. Small enemies get double (Done)
+    - If a player kills an enemy, the game score is increased by the score component of the enemy killed (Done)
+    - The score is displayed with the font defined in the game config file (Done)
+
+Drawing:
+    - In the render system, all entities will be given a slow rotation, making the game appear a little nicer (Done)
+    - Any entity with a lifespan component (measured in frames) is currently alive. It should have its alpha channel set to a ratio dependent on its remaining lifespan. (Done)
+    - For example if an entity has a lifespan of 100 and it has been alive for 50 frames, its alpha channel should be set to 0.5 (Done)
+     
+Misc:
+    - The 'P' key will pause the game
+    - The escape key will exit the game (Done)
+
+Config:
+    - The game config file will define the window width, height, frame rate, and fullscreen or not (1 for fullscreen, 0 for windowed)
+    - The game config file will define the font used to display the score with font, size, and rgb values
+    - The player config file will define the player shape, collision radius, speed, fill color, outline color, outline thickness
+    - The enemy config file will define the enemy shape, collision radius, speed, outline color, outline thickness, min vertices, max vertices, min speed, max speed, small enemy lifespan, and spawn interval
+    - The bullet config file will define the bullet shape, collision radius, speed, fill color, outline color, outline thickness, lifespan, and number of vertices
+
+     
+
